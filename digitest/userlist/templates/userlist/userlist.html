@@ -1,0 +1,29 @@
+{% extends "base.html" %} 
+
+{% block extra_js %}
+<script type="text/javascript" src="/static/js/userlist.js"></script>
+{% endblock %} 
+
+{% block content %}
+
+<div class="page-header">
+	<h2>User List Test</h2>
+	<h4>Name: <span class="listname">{{ userlist.name }}</span></h4>
+</div>
+
+<div class="userlist">
+	{% for row in userlist.rows.all %}
+	<div id="row{{ row.id }}" class="listrow">{{ row.content }}</div>
+	{% endfor %}
+</div>
+
+<div class="buttonbar">
+	<button type="button" class="btn btn-primary btn-get">Get</button>
+	<button type="button" class="btn btn-danger btn-save">Save</button>
+</div>
+<hr>
+<p>Reordene la lista arrastrando las filas.</p>
+<p>Obtenga la lista de la base de datos presionando el boton Get</p>
+<p>Guarde el orden de la lista en la base de datos presionando el boton Save</p>
+
+{% endblock %}

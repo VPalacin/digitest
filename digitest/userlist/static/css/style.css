@@ -1,0 +1,14 @@
+.userlist {
+	padding: 10px;	
+}
+.listrow {
+	padding: 5px 25px;
+	background-color: #eee;
+	border-radius:5px;
+	margin-top: 1px;
+	
+}
+
+.buttonbar {
+	padding : 5px 25px;
+}
