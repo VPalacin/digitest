@@ -3,6 +3,9 @@ $(document).ready(function(){
 	$(".btn-get").on("click", function() {
 			get_list("default");
 		});
+	$(".btn-save").on("click", function() {
+			get_order();
+		});
 
 });
 
@@ -34,5 +37,37 @@ function parse_list(data) {
 		// Agrego la fila a la lista
 		$(element).appendTo(list_element);	
 	}
+}
 
+function get_order(){
+
+	var list_order = $.map($(".listrow"), function(n, i){
+		  return n.id;
+		});
+
+	function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+	
+	var csrfmiddlewaretoken = getCookie('csrftoken');
+
+
+
+        $.ajax({
+            data: {list_order:list_order, csrfmiddlewaretoken:csrfmiddlewaretoken},
+            type: 'POST',
+            url: '/userlist/get_order/'
+       });
 }
