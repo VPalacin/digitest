@@ -15,7 +15,6 @@ def index(request):
     return HttpResponse(template.render(context, request))
     
 def get_list(request):
-
     name = request.GET.get("name",None)
     try:
         userlist = UserList.objects.get(name=name)
@@ -25,7 +24,6 @@ def get_list(request):
         'list':serializers.serialize('json',[userlist]),
         'rows':serializers.serialize('json',userlist.rows.all().order_by("position"))
         }
-
     return JsonResponse(data, safe=False)
 
 
@@ -34,19 +32,13 @@ def get_order(request):
     orderlist = request.POST.getlist('list_order[]')
     print(orderlist)
     
-
     for idx, item in enumerate(orderlist):
         print(idx, item)
-
-        value = item.strip('row')
-       
-        obj = ListRow.objects.get(pk='%s' % value)
-        
+        value = item.strip('row')    
+        obj = ListRow.objects.get(pk='%s' % value)     
         obj.position = idx + 1
-
         obj.save()
 
-    
     return JsonResponse([], safe=False)
 
 

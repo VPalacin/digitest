@@ -2,7 +2,6 @@
 
 {% block extra_js %}
 <script type="text/javascript" src="/static/js/userlist.js"></script>
-
 {% endblock %} 
 
 {% block content %}
@@ -13,17 +12,15 @@
 </div>
 
 <div class="userlist">
-		{% for row in userlist.rows.all %}
-		<div id="row{{ row.id }}" class="listrow">{{ row.content }}</div>
-		{% endfor %}
+	{% for row in userlist.rows.all %}
+	<div id="row{{ row.id }}" class="listrow">{{ row.content }}</div>
+	{% endfor %}
 </div>
 
 <div class="buttonbar">
-		<!--button type="button" class="btn btn-primary btn-get"><a href="{% url 'get_list'%}">Get</a></button -->
-		<button type="button" class="btn btn-primary btn-get">Get</button>
-		<button type="submit" class="btn btn-danger btn-save">Save</button>
+	<button type="button" class="btn btn-primary btn-get">Get</button>
+	<button type="submit" class="btn btn-danger btn-save">Save</button>
 </div>
-
 <hr>
 <p>Reordene la lista arrastrando las filas.</p>
 <p>Obtenga la lista de la base de datos presionando el boton Get</p>

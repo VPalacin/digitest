@@ -6,7 +6,6 @@ $(document).ready(function(){
 	$(".btn-save").on("click", function() {
 			get_order();
 		});
-
 });
 
 function get_list(name) {
@@ -15,14 +14,12 @@ function get_list(name) {
 		url: "/userlist/get_list",
 		data: {"name":name},
 		success: parse_list,
-		
 	});
 }
 
 function parse_list(data) {
 	var list = $.parseJSON(data["list"]);
 	var rows = $.parseJSON(data["rows"]);
-	
 	var list_element = $(".userlist");
 	
 	// borro las filas
@@ -40,11 +37,9 @@ function parse_list(data) {
 }
 
 function get_order(){
-
 	var list_order = $.map($(".listrow"), function(n, i){
 		  return n.id;
 		});
-
 	function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -59,12 +54,8 @@ function get_order(){
         }
     }
     return cookieValue;
-}
-	
+}	
 	var csrfmiddlewaretoken = getCookie('csrftoken');
-
-
-
         $.ajax({
             data: {list_order:list_order, csrfmiddlewaretoken:csrfmiddlewaretoken},
             type: 'POST',

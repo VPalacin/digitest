@@ -13,6 +13,3 @@ class ListRow(models.Model):
     list = models.ForeignKey(UserList, on_delete=models.CASCADE, related_name='rows')
     content = models.CharField(max_length=200)
     position = models.PositiveSmallIntegerField(default=0)
-
-
-    
